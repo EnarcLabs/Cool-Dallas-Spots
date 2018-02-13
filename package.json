@@ -1,0 +1,26 @@
+{
+  "name": "dallascoolplaces",
+  "version": "1.0.0",
+  "description": "A simple server for storing cool places to go to in dallas, anyone can use this for thier own uses.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "nodejs",
+    "mongodb",
+    "api",
+    "city"
+  ],
+  "author": "Cameron Steele (manosteele)",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-sanitizer": "^1.0.3",
+    "mongodb": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.12"
+  }
+}
