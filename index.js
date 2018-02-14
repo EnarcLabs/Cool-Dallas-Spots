@@ -6,7 +6,6 @@ const Config = require('./Config')
 let db;
 
 app.use(bodyParser.urlencoded({extended: true}))
-app.use(expressSanitizer())
 
 MongoClient.connect(Config.mongodbURL, (err, client) => {
   if (err) return console.log(err);
