@@ -2,7 +2,8 @@ const MongoClient = require('mongodb').MongoClient
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-const Config = require('./Config')
+const Config = require('./config/Config')
+let Place = require('./classes/Place')
 let db;
 
 app.use(bodyParser.urlencoded({extended: true}))
@@ -20,13 +21,15 @@ MongoClient.connect(Config.mongodbURL, (err, client) => {
   })
 
   app.post('/place', (req, res, next) => { // CRUD: C - Creates a new place
-    console.log(req.body)
+    let {title, description, coordinates} = req.body
     if(!(!!title && !!description && !!coordinates)){
       console.log("Error");
     }else{
       coordinates = JSON.parse(coordinates)
-      console.log("Title:", title, "\nDescription:", description ,"\nLong:", coordinates.longitude, "\nLat:", coordinates.latitude)
+      //console.log("Title:", title, "\nDescription:", description ,"\nLong:", coordinates.longitude, "\nLat:", coordinates.latitude)
       console.log("success")
+      let newData = new Place(title, description, coordinates);
+      console.log("yep: ",newData.print());
       db.collection('places').save(req.body, (err, result) => {
         if (err) return console.log(err)
         console.log(result)
